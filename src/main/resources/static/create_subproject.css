@@ -1,0 +1,61 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea.form-control {
+    height: 100px;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #218838;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.back-btn {
+    margin-right: 10px;
+}
+
+a.btn.btn-secondary {
+    background-color: grey; /* Grå farve */
+}
+
+a.btn.btn-secondary:hover {
+    background-color: darkgrey; /* Mørkere grå ved hover */
+}
+
+
+

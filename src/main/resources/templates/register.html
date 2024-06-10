@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+<div class="container mt-5">
+    <img src="https://t3.ftcdn.net/jpg/02/81/97/02/240_F_281970265_KR6Ey4XF3miLYq0QDp3WsH0m35MR2tGC.jpg" alt="Registration Banner" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+    <h2>Opret din bruger</h2>
+    <form th:action="@{/users/register}" th:object="${userObject}" method="post">
+        <div class="form-group">
+            <label for="firstname">Navn</label>
+            <input type="text" class="form-control" id="firstname" th:field="*{firstname}" placeholder="Indtast navn" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Brugernavn</label>
+            <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Indtast brugernavn" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Kodeord</label>
+            <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Indtast kodeord" required>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">Opret</button>
+            <a href="/" class="btn btn-secondary">Tilbage</a>
+
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

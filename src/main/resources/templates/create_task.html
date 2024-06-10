@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="/create_task.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Opret opgave</h2>
+
+    <form th:action="@{/create_task}" th:object="${taskObject}" method="post">
+        <input type="hidden" th:field="*{subProject_Id}" th:value="${session.subprojectId}">
+        <div class="form-group">
+            <label for="description">Beskrivelse:</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Indtast beskrivelse" required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" th:field="*{status}" required>
+                <option value="Afventer">Afventer</option>
+                <option value="Påbegyndt">Påbegyndt</option>
+                <option value="Fuldført">Fuldført</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Prioritet</label>
+            <select class="form-control" id="priority" th:field="*{priority}" required>
+                <option value="Lav">Lav</option>
+                <option value="Middel">Middel</option>
+                <option value="Høj">Høj</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="estimatedTime">Estimeret tid (Timer):</label>
+            <input type="number" class="form-control" id="estimatedTime" th:field="*{estimatedTime}" placeholder="Indtast estimeret tid" required>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">Opret </button>
+            <a th:href="@{/tasks/{subprojectId}(subprojectId=${session.subprojectId})}" class="btn btn-secondary">Tilbage</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

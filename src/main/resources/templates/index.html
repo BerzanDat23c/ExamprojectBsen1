@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Solutions</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Alpha Solutions</h1>
+    </div>
+
+    <nav>
+        <ul>
+            <li class="login-button">
+                <a th:href="@{/login}">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero hero-section">
+    <div class="container">
+        <h2>Velkommen til dit projektsstyringsværktøj</h2>
+        <p>Et kraftfuldt styringsværktøj til at styre dine projekter effektiv</p>
+
+        <a th:href="register" class="btn btn-primary">Opret bruger</a>
+
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2>Nøgle funktioner</h2>
+        <ul>
+            <li>Opret projekter</li>
+            <li>Del dit projekt op i opgaver</li>
+            <li>Team Collaboration</li>
+        </ul>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <h2>Hvordan det virker</h2>
+        <p>Project Manager forenkler projektstyring ved at tilbyde intuitive værktøjer til at oprette projekter, tildele opgaver og samarbejde med teammedlemmer.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Project Manager. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
