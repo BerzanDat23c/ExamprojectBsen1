@@ -1,27 +1,40 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Alpha Solutions - Subprojekter</title>
+    <!-- Dette linker til en CSS-fil, der hedder "subprojects.css" for at style siden -->
     <link rel="stylesheet" href="/subprojects.css">
 </head>
 <body>
 <div class="container">
+    <!-- Dette er en navigationsbar -->
     <nav class="navbar">
         <ul>
+            <!-- Dette er en knap til at gå tilbage til projektsiden -->
             <li class="tilbage-button">
                 <a href="/projects" class="btn btn-secondary">Tilbage til projekter</a>
             </li>
         </ul>
     </nav>
 
+    <!-- Dette er en gruppe af knapper -->
     <div class="button-group">
+        <!-- En knap til at oprette et nyt subprojekt -->
         <a th:href="@{/create_subproject/{projectId}(projectId=${session.currentProjectId})}" class="btn subproject">Opret Subprojekt</a>
     </div>
 
+    <!-- Dette er en overskrift, der siger "Subprojekter" -->
     <h2>Subprojekter</h2>
+
+    <!-- Dette er en tabel til at vise subprojekterne -->
     <table>
+        <!-- Dette er tabellens hoved, hvor vi sætter navnene på kolonnerne -->
         <thead>
         <tr>
             <th>Navn</th>
@@ -33,20 +46,29 @@
             <th>Slet</th>
         </tr>
         </thead>
+        <!-- Dette er tabellens krop, hvor vi viser subprojekterne -->
         <tbody>
+        <!-- Her går vi igennem hvert subprojekt og viser det i tabellen -->
         <tr th:each="subproject : ${subprojects}">
+            <!-- Viser subprojektets navn som et link -->
             <td>
                 <a th:href="@{/tasks/{subprojectId}(subprojectId=${subproject.id})}" th:text="${subproject.name}"></a>
             </td>
+            <!-- Viser subprojektets beskrivelse -->
             <td th:text="${subproject.description}"></td>
+            <!-- Viser subprojektets status -->
             <td th:text="${subproject.status}"></td>
+            <!-- Viser subprojektets startdato -->
             <td th:text="${subproject.startDate}"></td>
+            <!-- Viser subprojektets slutdato -->
             <td th:text="${subproject.endDate}"></td>
+            <!-- En knap til at redigere subprojektet -->
             <td>
                 <form th:action="@{/edit_subproject/{id}(id=${subproject.id})}" method="get">
                     <button class="edit" type="submit">Rediger</button>
                 </form>
             </td>
+            <!-- En knap til at slette subprojektet -->
             <td>
                 <form th:action="@{'/confirm_delete_subproject/' + ${subproject.id} + '/' + ${id}}" method="get">
                     <button type="submit" class="delete">Slet</button>

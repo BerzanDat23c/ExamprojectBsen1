@@ -1,35 +1,59 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Register</title>
+    <!-- Dette linker til en CSS-fil, der hedder "register.css" for at style siden -->
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
 <div class="container mt-5">
+    <!-- Dette er et billede, der vises øverst på siden -->
     <img src="https://t3.ftcdn.net/jpg/02/81/97/02/240_F_281970265_KR6Ey4XF3miLYq0QDp3WsH0m35MR2tGC.jpg" alt="Registration Banner" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+
+    <!-- Dette er en overskrift, der siger "Opret din bruger" -->
     <h2>Opret din bruger</h2>
+
+    <!-- Dette er en formular til at oprette en ny bruger -->
     <form th:action="@{/users/register}" th:object="${userObject}" method="post">
+        <!-- Formularen sender data til serveren for at oprette en ny bruger -->
+
+        <!-- Dette er en gruppe af felter til at indtaste fornavn -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Navn" -->
             <label for="firstname">Navn</label>
+            <!-- Et tekstfelt til at indtaste fornavnet -->
             <input type="text" class="form-control" id="firstname" th:field="*{firstname}" placeholder="Indtast navn" required>
         </div>
+
+        <!-- Dette er en gruppe af felter til at indtaste brugernavn -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Brugernavn" -->
             <label for="username">Brugernavn</label>
+            <!-- Et tekstfelt til at indtaste brugernavnet -->
             <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Indtast brugernavn" required>
         </div>
+
+        <!-- Dette er en gruppe af felter til at indtaste kodeord -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Kodeord" -->
             <label for="password">Kodeord</label>
+            <!-- Et tekstfelt til at indtaste kodeordet -->
             <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Indtast kodeord" required>
         </div>
 
+        <!-- Dette er en gruppe af knapper -->
         <div class="button-group">
+            <!-- En knap, der siger "Opret" for at indsende formularen -->
             <button type="submit" class="btn btn-primary">Opret</button>
+            <!-- Et link, der siger "Tilbage" for at gå tilbage til hjemmesiden -->
             <a href="/" class="btn btn-secondary">Tilbage</a>
-
         </div>
-
     </form>
 </div>
 </body>

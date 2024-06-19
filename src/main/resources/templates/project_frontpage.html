@@ -1,27 +1,41 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Alpha Solutions</title>
+    <!-- Dette linker til en CSS-fil, der hedder "project_frontpage.css" for at style siden -->
     <link rel="stylesheet" href="project_frontpage.css">
 </head>
 <body>
 <div class="container">
+    <!-- Dette er en overskrift, der siger "Dine projekter" -->
     <h1>Dine projekter</h1>
+
+    <!-- Dette er en navigationsbar -->
     <nav class="navbar">
         <ul>
+            <!-- Dette er en liste af knapper -->
             <li class="logud-button">
+                <!-- En knap til at logge ud -->
                 <a th:href="@{/logud}">Logud</a>
             </li>
         </ul>
     </nav>
 
+    <!-- Dette er en gruppe af knapper -->
     <div class="button-group">
+        <!-- En knap til at oprette et nyt projekt -->
         <a th:href="@{/create_project}" class="add btn">Opret projekt</a>
     </div>
 
+    <!-- Dette er en tabel til at vise projekterne -->
     <table>
+        <!-- Dette er tabellens hoved, hvor vi sætter navnene på kolonnerne -->
         <thead>
         <tr>
             <th>Navn</th>
@@ -33,23 +47,31 @@
             <th>Slet</th>
         </tr>
         </thead>
+        <!-- Dette er tabellens krop, hvor vi viser projekterne -->
         <tbody>
+        <!-- Her går vi igennem hvert projekt og viser det i tabellen -->
         <tr th:each="project : ${projects}">
+            <!-- Viser projektets navn som et link -->
             <td><a th:href="@{/project/{id}(id=${project.id})}" th:text="${project.name}"></a></td>
+            <!-- Viser projektets beskrivelse -->
             <td th:text="${project.description}"></td>
+            <!-- Viser projektets status -->
             <td th:text="${project.status}"></td>
+            <!-- Viser projektets startdato -->
             <td th:text="${project.startDate}"></td>
+            <!-- Viser projektets slutdato -->
             <td th:text="${project.endDate}"></td>
+            <!-- En knap til at redigere projektet -->
             <td>
                 <form th:action="@{/edit_project/{id}(id=${project.id})}" method="get">
                     <button class="edit" type="submit">Rediger</button>
                 </form>
             </td>
+            <!-- En knap til at slette projektet -->
             <td>
                 <form th:action="@{'/confirm_delete/' + ${project.id}}" method="get">
                     <button class="delete" type="submit">Slet</button>
                 </form>
-
             </td>
         </tr>
         </tbody>

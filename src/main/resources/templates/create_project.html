@@ -1,46 +1,72 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Opret projekt</title>
+    <!-- Dette linker til en CSS-fil, der hedder "create_project.css" for at style siden -->
     <link rel="stylesheet" href="/create_project.css">
 </head>
 <body>
 <div class="container mt-5">
+    <!-- Dette er en overskrift, der siger "Opret projekt" -->
     <h2>Opret projekt</h2>
+
+    <!-- Dette er en formular til at oprette et nyt projekt -->
     <form th:action="@{/create_project}" th:object="${projectObject}" method="post">
+        <!-- Formularen sender data til serveren for at oprette et nyt projekt -->
+
+        <!-- Dette er en gruppe af felter til at indtaste information -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Navn" -->
             <label for="name">Navn</label>
+            <!-- Et tekstfelt til at indtaste navnet på projektet -->
             <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Indtast navn" required>
         </div>
+
         <div class="form-group">
+            <!-- Et mærkat, der siger "Projekt beskrivelse" -->
             <label for="description">Projekt beskrivelse</label>
+            <!-- Et tekstområde til at indtaste beskrivelsen af projektet -->
             <textarea class="form-control" id="description" th:field="*{description}" placeholder="Projekt beskrivelse" required></textarea>
         </div>
+
         <div class="form-group">
+            <!-- Et mærkat, der siger "Status" -->
             <label for="status">Status</label>
+            <!-- En dropdown-menu til at vælge status for projektet -->
             <select class="form-control" id="status" th:field="*{status}" required>
                 <option value="Afventer">Afventer</option>
                 <option value="Påbegyndt">Påbegyndt</option>
                 <option value="Fuldført">Fuldført</option>
             </select>
         </div>
+
         <div class="form-group">
+            <!-- Et mærkat, der siger "Start Dato" -->
             <label for="startDate">Start Dato</label>
+            <!-- Et datofelt til at vælge startdatoen for projektet -->
             <input type="date" class="form-control" id="startDate" th:field="*{startDate}" required>
         </div>
+
         <div class="form-group">
+            <!-- Et mærkat, der siger "Slut Dato" -->
             <label for="endDate">Slut Dato</label>
+            <!-- Et datofelt til at vælge slutdatoen for projektet -->
             <input type="date" class="form-control" id="endDate" th:field="*{endDate}" required>
         </div>
 
-
+        <!-- Dette er en gruppe af knapper -->
         <div class="button-group">
+            <!-- En knap, der siger "Opret" for at indsende formularen -->
             <button type="submit" class="btn btn-primary">Opret</button>
+            <!-- Et link, der siger "Tilbage" for at gå tilbage til projektsiden -->
             <a href="/projects" class="btn btn-primary">Tilbage</a>
         </div>
-
     </form>
 </div>
 </body>

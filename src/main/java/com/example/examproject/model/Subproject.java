@@ -1,96 +1,98 @@
+// Denne linje fortæller, at denne fil er en del af pakken 'com.example.examproject.model'
 package com.example.examproject.model;
 
+// Importerer nødvendige klasser fra Java-biblioteket
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 
+// Definerer en klasse kaldet 'Subproject'
 public class Subproject {
 
-    // Attributter for Subproject-klassen
-    private int id; // Underprojektets ID
+    // Variabler der holder information om underprojektet
+    private int id; // Underprojektets ID (en unik identifikator)
     private int project_Id; // ID for projektet, som underprojektet hører til
     private String name; // Underprojektets navn
     private String description; // Beskrivelse af underprojektet
-    private String status; // Status for underprojektet
+    private String status; // Status for underprojektet (f.eks. 'In Progress', 'Completed')
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd") // Angiver datoformatet
     private LocalDate startDate; // Startdato for underprojektet
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd") // Angiver datoformatet
     private LocalDate endDate; // Slutdato for underprojektet
 
-    // Konstruktør med parametre til at initialisere alle attributter
+    // Dette er en 'konstruktør', der bruges til at lave et nyt underprojekt med alle informationerne
     public Subproject(String name, String description, String status, LocalDate startDate, LocalDate endDate, int id, int project_Id) {
-        this.name = name;
-        this.description = description;
-        this.status = status;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.id = id;
-        this.project_Id = project_Id;
+        this.name = name; // Sætter underprojektets navn
+        this.description = description; // Sætter underprojektets beskrivelse
+        this.status = status; // Sætter underprojektets status
+        this.startDate = startDate; // Sætter underprojektets startdato
+        this.endDate = endDate; // Sætter underprojektets slutdato
+        this.id = id; // Sætter underprojektets ID
+        this.project_Id = project_Id; // Sætter ID for projektet, som underprojektet hører til
     }
 
-    // Standard konstruktør uden parametre
+    // Dette er en standard 'konstruktør', der ikke tager nogen parametre
     public Subproject() {
     }
 
-    // Gettere og settere for alle attributter
+    // Gettere og settere - disse bruges til at få og sætte værdierne for variablerne
     public int getId() {
-        return id;
+        return id; // Returnerer underprojektets ID
     }
 
     public int getProject_Id() {
-        return project_Id;
+        return project_Id; // Returnerer projektets ID, som underprojektet hører til
     }
 
     public String getName() {
-        return name;
+        return name; // Returnerer underprojektets navn
     }
 
     public String getDescription() {
-        return description;
+        return description; // Returnerer underprojektets beskrivelse
     }
 
     public String getStatus() {
-        return status;
+        return status; // Returnerer underprojektets status
     }
 
     public LocalDate getStartDate() {
-        return startDate;
+        return startDate; // Returnerer underprojektets startdato
     }
 
     public LocalDate getEndDate() {
-        return endDate;
+        return endDate; // Returnerer underprojektets slutdato
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = id; // Sætter underprojektets ID
     }
 
     public void setProjectId(int project_Id) {
-        this.project_Id = project_Id;
+        this.project_Id = project_Id; // Sætter projektets ID, som underprojektet hører til
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name; // Sætter underprojektets navn
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description; // Sætter underprojektets beskrivelse
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = status; // Sætter underprojektets status
     }
 
     public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+        this.startDate = startDate; // Sætter underprojektets startdato
     }
 
     public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+        this.endDate = endDate; // Sætter underprojektets slutdato
     }
 
-    // Overrider toString metoden til at returnere en strengrepræsentation af underprojektet
+    // Overrider toString metoden til at returnere en tekstbeskrivelse af underprojektet
     @Override
     public String toString() {
         return "Subproject{" +

@@ -1,27 +1,40 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Alpha Solutions - Opgaver</title>
+    <!-- Dette linker til en CSS-fil, der hedder "tasks.css" for at style siden -->
     <link rel="stylesheet" href="/tasks.css">
 </head>
 <body>
 <div class="container">
+    <!-- Dette er en navigationsbar -->
     <nav class="navbar">
         <ul>
+            <!-- Dette er en knap til at gå tilbage til projektsiden -->
             <li class="tilbage-button">
                 <a th:href="@{/projects}" class="btn btn-secondary">Tilbage til projekter</a>
             </li>
         </ul>
     </nav>
 
+    <!-- Dette er en gruppe af knapper -->
     <div class="button-group">
+        <!-- En knap til at oprette en ny opgave -->
         <a th:href="@{/create_task/{subprojectId}(subprojectId=${subprojectId})}" class="btn task">Opret opgave</a>
     </div>
 
+    <!-- Dette er en overskrift, der siger "Opgaver" -->
     <h2>Opgaver</h2>
+
+    <!-- Dette er en tabel til at vise opgaverne -->
     <table>
+        <!-- Dette er tabellens hoved, hvor vi sætter navnene på kolonnerne -->
         <thead>
         <tr>
             <th>Beskrivelse</th>
@@ -32,25 +45,27 @@
             <th>Slet</th>
         </tr>
         </thead>
+        <!-- Dette er tabellens krop, hvor vi viser opgaverne -->
         <tbody>
+        <!-- Her går vi igennem hver opgave og viser den i tabellen -->
         <tr th:each="task : ${tasks}">
+            <!-- Viser opgavens beskrivelse -->
             <td th:text="${task.description}"></td>
+            <!-- Viser opgavens status -->
             <td th:text="${task.status}"></td>
+            <!-- Viser opgavens prioritet -->
             <td th:text="${task.priority}"></td>
+            <!-- Viser opgavens estimerede tid -->
             <td th:text="${task.estimatedTime}"></td>
+            <!-- En knap til at redigere opgaven -->
             <td>
                 <form th:action="@{/edit_task/{id}(id=${task.id})}" method="get">
                     <button class="edit" type="submit">Rediger</button>
                 </form>
             </td>
+            <!-- En knap til at slette opgaven -->
             <td>
                 <form th:action="@{/confirm_delete_task/{id}/{subprojectId}(id=${task.id}, subprojectId=${subprojectId})}" method="get">
                     <button type="submit" class="btn delete">Slet</button>
                 </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-</body>
-</html>
+

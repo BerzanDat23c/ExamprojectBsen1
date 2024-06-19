@@ -1,30 +1,54 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Login</title>
+    <!-- Dette linker til en CSS-fil, der hedder "login.css" for at style siden -->
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
 <div class="container mt-5">
+    <!-- Dette er et billede, der vises øverst på siden -->
     <img src="https://t3.ftcdn.net/jpg/02/81/97/02/240_F_281970265_KR6Ey4XF3miLYq0QDp3WsH0m35MR2tGC.jpg" alt="Registration Banner" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+
+    <!-- Dette er en overskrift, der siger "Logind" -->
     <h2>Logind</h2>
+
+    <!-- Dette er en formular til at logge ind -->
     <form action="/login" method="post">
+        <!-- Formularen sender brugernavn og kodeord til serveren for at logge ind -->
+
+        <!-- Dette er en gruppe af felter til at indtaste brugernavn -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Brugernavn" -->
             <label for="username">Brugernavn</label>
+            <!-- Et tekstfelt til at indtaste brugernavnet -->
             <input type="text" class="form-control" id="username" name="username" placeholder="Indtast navn" required>
         </div>
+
+        <!-- Dette er en gruppe af felter til at indtaste kodeord -->
         <div class="form-group">
+            <!-- Et mærkat, der siger "Kodeord" -->
             <label for="password">Kodeord</label>
+            <!-- Et tekstfelt til at indtaste kodeordet -->
             <input type="password" class="form-control" id="password" name="password" placeholder="Indtast kodeord" required>
         </div>
+
+        <!-- En knap, der siger "Login" for at indsende formularen -->
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
+
+    <!-- Dette viser en fejlmeddelelse, hvis der er en fejl -->
     <div th:if="${error}" class="alert alert-danger" role="alert">
         <span th:text="${error}"></span>
     </div>
 
+    <!-- Et link, der siger "Tilbage" for at gå tilbage til hjemmesiden -->
     <a href="/" class="btn btn-secondary">Tilbage</a>
 </div>
 </body>

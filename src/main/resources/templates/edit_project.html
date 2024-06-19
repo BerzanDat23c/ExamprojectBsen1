@@ -1,41 +1,57 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette er titlen på siden, som vises på fanen i browseren -->
     <title>Rediger projekt</title>
+    <!-- Dette linker til en CSS-fil, der hedder "edit_project.css" for at style siden -->
     <link rel="stylesheet" href="/edit_project.css">
 </head>
 <body>
 <div class="container">
+    <!-- Dette er en overskrift, der siger "Rediger projekt" -->
     <h1>Rediger projekt</h1>
 
+    <!-- Dette er en formular til at redigere et projekt -->
     <form th:action="@{/edit_project/{id}(id=${project.id})}" method="post" th:object="${project}">
+        <!-- Formularen sender data til serveren for at opdatere et projekt -->
+
+        <!-- Skjult inputfelt til at gemme projektets ID -->
         <input type="hidden" name="projectId" th:value="${project.id}">
 
+        <!-- Et mærkat og et tekstfelt til at redigere navnet på projektet -->
         <label for="name">Navn</label>
         <input type="text" id="name" name="name" th:value="${project.name}">
 
-
-
+        <!-- Et mærkat og et tekstområde til at redigere beskrivelsen af projektet -->
         <label for="description">Projekt beskrivelse</label>
         <textarea id="description" name="description" th:text="${project.description}"></textarea>
 
+        <!-- Et mærkat og et datofelt til at redigere startdatoen for projektet -->
         <label for="startDate">Start Dato</label>
         <input type="date" id="startDate" name="startDate" th:value="${project.startDate}">
 
+        <!-- Et mærkat og et datofelt til at redigere slutdatoen for projektet -->
         <label for="endDate">Slut Dato</label>
         <input type="date" id="endDate" name="endDate" th:value="${project.endDate}">
 
+        <!-- Et mærkat og en dropdown-menu til at redigere status for projektet -->
         <label for="status">Status</label>
         <select id="status" name="status">
             <option value="Afventer" th:selected="${project.status == 'Afventer'}">Afventer</option>
-            <option value="Igangsat" th:selected="${project.status == 'Påbegyndt'}">Påbegyndt</option>
+            <option value="Påbegyndt" th:selected="${project.status == 'Påbegyndt'}">Påbegyndt</option>
             <option value="Fuldført" th:selected="${project.status == 'Fuldført'}">Fuldført</option>
         </select>
 
+        <!-- Dette er en gruppe af knapper -->
         <div class="button-group">
+            <!-- En knap, der siger "Gem" for at indsende formularen -->
             <button type="submit" class="btn btn-primary">Gem</button>
+            <!-- Et link, der siger "Tilbage" for at gå tilbage til projektsiden -->
             <a href="/projects" class="btn btn-secondary">Tilbage</a>
         </div>
     </form>

@@ -1,18 +1,30 @@
+<!-- Dette fortæller, at dokumentet er en HTML-fil -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Dette sætter tegnsættet til UTF-8, så vi kan vise alle typer tegn -->
     <meta charset="UTF-8">
+    <!-- Dette gør, at siden ser godt ud på alle skærmstørrelser (som mobiltelefoner) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dette linker til en CSS-fil, der hedder "confirm_delete.css" for at style siden -->
     <link rel="stylesheet" href="/confirm_delete.css">
 </head>
 <body>
 <div class="container">
+    <!-- Dette er en besked, der spørger om du er sikker på, at du vil slette projektet -->
     <p>Er du sikker på at du vil slette dette projekt? Alle oplysninger vil gå tabt.</p>
+
+    <!-- Dette er en formular til at slette projektet -->
     <form th:action="@{/deleteProject}" method="post">
+        <!-- Dette skjuler projektets ID, så vi ved hvilket projekt der skal slettes -->
         <input type="hidden" name="projectId" th:value="${projectId}">
+        <!-- Dette er en knap, der siger "Slet", når du trykker på den, slettes projektet -->
         <button type="submit" class="btn delete">Slet</button>
     </form>
+
+    <!-- Dette er en anden formular til at annullere sletningen og gå tilbage til projektsiden -->
     <form th:action="@{/projects}" method="get">
+        <!-- Dette er en knap, der siger "Annuller", når du trykker på den, går du tilbage til projektsiden -->
         <button type="submit" class="btn">Annuller</button>
     </form>
 </div>
